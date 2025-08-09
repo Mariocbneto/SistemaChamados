@@ -36,6 +36,7 @@
         }`;
       }
 
+      // Dados simulados atualizados para os novos nomes de status
       const chamados = [
         {
           nome: "FALHA NA INSTALAÇÃO EM TODA APS",
@@ -48,7 +49,7 @@
         {
           nome: "ERRO NO SISTEMA X",
           id: "t_507170035",
-          status: "processando",
+          status: "aberto",
           abertura: "18-07-2025 10:20",
           ultima: "01-08-2025 14:15",
           requerente: "João da Silva",
@@ -56,12 +57,18 @@
         {
           nome: "ATUALIZAÇÃO DE SOFTWARE",
           id: "t_507170036",
-          status: "solucionado",
+          status: "analise",
           abertura: "19-07-2025 08:00",
           ultima: "20-07-2025 09:00",
           requerente: "Ana Paula",
         },
       ];
+
+      // Função para mostrar o texto do status com a primeira letra maiúscula
+      function formatStatus(s) {
+        if (!s) return "";
+        return s.charAt(0).toUpperCase() + s.slice(1);
+      }
 
       const filtrados = status
         ? chamados.filter((c) => c.status === status)
@@ -73,7 +80,9 @@
         tr.innerHTML = `
           <td>${c.nome}</td>
           <td>${c.id}</td>
-          <td><a href="descricao.html?id=${c.id}" class="status ${c.status}">${c.status}</a></td>
+          <td><a href="descricao.html?id=${c.id}" class="status ${
+          c.status
+        }">${formatStatus(c.status)}</a></td>
           <td>${c.abertura}</td>
           <td>${c.ultima}</td>
           <td>${c.requerente}</td>

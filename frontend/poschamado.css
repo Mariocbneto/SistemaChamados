@@ -43,12 +43,12 @@ th {
   color: white;
 }
 
-.processando {
+.aberto {
   background-color: #ffc107;
   color: black;
 }
 
-.solucionado {
+.analise {
   background-color: #17a2b8;
   color: white;
 }
