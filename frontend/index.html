@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Solicitação</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Sistema de Chamados</h1>
+        <div class="stats">
+          <div
+            class="stat"
+            onclick="window.location.href='poschamado.html?status=processando'"
+          >
+            1 Processando
+          </div>
+          <div
+            class="stat"
+            onclick="window.location.href='poschamado.html?status=solucionado'"
+          >
+            1 Solucionado
+          </div>
+          <div
+            class="stat"
+            onclick="window.location.href='poschamado.html?status=fechado'"
+          >
+            16 Fechado
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <h2>Registrar Solicitação</h2>
+
+        <form>
+          <div class="form-group">
+            <label for="servico">Item do Catálogo de Serviços *</label>
+            <select id="servico" required>
+              <option value="">----</option>
+              <option value="item1">TOKEN EXPIRADO</option>
+              <option value="item2">VPN EXPIRADA</option>
+              <option value="item1">MANUTENCAO MAQUINA</option>
+              <option value="item2">DARUMA/SCANNER</option>
+              <option value="item1">VISITA APS</option>
+              <option value="item2">AUTENTICADOR</option>
+              <option value="item1">ATENDIMENTO REMOTO</option>
+              <option value="item2">TROCA DE SENHA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="titulo">Título *</label>
+            <input
+              type="text"
+              id="titulo"
+              required
+              placeholder="Digite um título/nome para sua solicitação. (de 10 a 50 caracteres)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descricao">Descrição *</label>
+            <textarea
+              id="descricao"
+              required
+              placeholder="Descreva sua solicitação com o maior número possível de informações."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Número de telefone para contato: *</label>
+            <input type="tel" id="telefone" placeholder="(DDD + Número)" />
+            <p>
+              Essa informação será utilizada exclusivamente para este
+              atendimento.
+            </p>
+          </div>
+
+          <button type="submit">Enviar Solicitação</button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

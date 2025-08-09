@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="poschamado.css" />
+    <title>Tabela de Status</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="titulo-status">Chamados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Data de abertura</th>
+            <th>Última atualização</th>
+            <th>Requerente</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-chamados">
+          <!-- Dados serão preenchidos pelo JavaScript futuramente -->
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const status = params.get("status");
+
+      if (status) {
+        document.getElementById("titulo-status").textContent = `Chamados - ${
+          status.charAt(0).toUpperCase() + status.slice(1)
+        }`;
+      }
+
+      const chamados = [
+        {
+          nome: "FALHA NA INSTALAÇÃO EM TODA APS",
+          id: "t_507170034",
+          status: "fechado",
+          abertura: "17-07-2025 09:41",
+          ultima: "31-07-2025 12:06",
+          requerente: "Mario Cadena Bieda Neto",
+        },
+        {
+          nome: "ERRO NO SISTEMA X",
+          id: "t_507170035",
+          status: "processando",
+          abertura: "18-07-2025 10:20",
+          ultima: "01-08-2025 14:15",
+          requerente: "João da Silva",
+        },
+        {
+          nome: "ATUALIZAÇÃO DE SOFTWARE",
+          id: "t_507170036",
+          status: "solucionado",
+          abertura: "19-07-2025 08:00",
+          ultima: "20-07-2025 09:00",
+          requerente: "Ana Paula",
+        },
+      ];
+
+      const filtrados = status
+        ? chamados.filter((c) => c.status === status)
+        : chamados;
+
+      const tbody = document.getElementById("tabela-chamados");
+      filtrados.forEach((c) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${c.nome}</td>
+          <td>${c.id}</td>
+          <td><a href="descricao.html?id=${c.id}" class="status ${c.status}">${c.status}</a></td>
+          <td>${c.abertura}</td>
+          <td>${c.ultima}</td>
+          <td>${c.requerente}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>
